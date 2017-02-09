@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      var alphabetManager = (function() {
+
+          var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+          return {
+
+            getLetterAt: function(n) {
+              return alphabet[n];
+            },
+
+            getPositionOf: function(c) {
+              return alphabet.indexOf(c);
+            }
+
+          }
+
+      })();
+
+      var vigenereCipher = (function() {
+
+        var key = 'lemonlemonle';
+
+        var getDecipheredPosition = function(messageCharPosition, keyCharPosition) {
+
+          var subtraction = messageCharPosition - keyCharPosition;
+          return subtraction < 0 ? (26 + subtraction) % 26 : subtraction % 26;
+
+        }
+
+        return {
+
+          encrypt: function(message) {
+
+            var cont = 0;
+            var cipheredArray = [];
+
+            message.toLowerCase().split('').forEach(function(c) {
+
+              var messageCharPosition = alphabetManager.getPositionOf(c);
+              var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
+
+              cont === key.split('').length ? cont = 0 : cont ++;
+
+              cipheredArray.push(alphabetManager.getLetterAt((messageCharPosition + keyCharPosition) % 26));
+
+            });
+
+            return cipheredArray.join('');
+          },
+
+          decrypt: function(message) {
+
+            var cont = 0;
+            var decipheredArray = [];
+
+            message.toLowerCase().split('').forEach(function(c) {
+
+              var messageCharPosition = alphabetManager.getPositionOf(c);
+              var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
+
+              cont === key.split('').length ? cont = 0 : cont ++;
+
+              var position = getDecipheredPosition(messageCharPosition, keyCharPosition);
+              decipheredArray.push(alphabetManager.getLetterAt(position));
+
+            });
+
+            return decipheredArray.join('');
+
+          }
+
+        }
+
+      })();
+
+      console.log('"ATTACKATDAWN" encrypted: ' + vigenereCipher.encrypt('ATTACKATDAWN'));
+      console.log('"LXFOPVEFRNHR" decrypted: ' + vigenereCipher.decrypt('LXFOPVEFRNHR'));
+
+    </script>
+  </body>
+</html>
