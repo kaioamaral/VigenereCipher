@@ -7,6 +7,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
 
@@ -25,33 +26,33 @@
               <label for="message">Your message here:</label>
               <input type="text" id="message" class="form-control" placeholder="example: ATTACKATDAWN"/>
             </div>
-            <a href="#" class="btn btn-primary" style="float: right;" id="encrypt-btn">Encrypt</a>
+            <a href="#" class="btn btn-primary" id="encrypt-btn">Encrypt</a>
           </form>
         </div>
       </div>
 
-      <div class="row text-center" style="min-height:50px;">
+      <div class="row text-center result-placeholder">
         <div class="col-md-12">
-          <span id="result" style="font-size: 24px;"></span>
+          <span id="result"></span>
         </div>
       </div>
 
     </main>
 
-    <section class="container" style="padding-top: 2%;">
+    <section class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12">
 
           <h1>More...</h1>
 
           <blockquote cite="http://https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher">
-            <p style="color: #5e6264;text-align:justify;">
+            <p class="blockquote-paragraph">
               "The Vigenère cipher is a method of encrypting alphabetic text by using a series of different Caesar ciphers based on the letters of a keyword.
               It is a simple form of polyalphabetic substitution. The Vigenère (French pronunciation: ​[viʒnɛːʁ]) cipher has been reinvented many times.
               The method was originally described by Giovan Battista Bellaso in his 1553 book La cifra del. Sig. Giovan Battista Bellaso; however,
               the scheme was later misattributed to Blaise de Vigenère in the 19th century, and is now widely known as the "Vigenère cipher".
             </p>
-            <p style="color: #5e6264;text-align:justify;">
+            <p class="blockquote-paragraph">
               Though the cipher is easy to understand and implement, for three centuries it resisted all attempts to break it;
               this earned it the description le chiffre indéchiffrable (French for 'the indecipherable cipher'). Many people have tried to implement
               encryption schemes that are essentially Vigenère ciphers. Friedrich Kasiski was the first to publish a general method of deciphering

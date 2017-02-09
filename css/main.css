@@ -1,0 +1,7 @@
+.blockquote-paragraph { color: #5e6264;text-align:justify; }
+
+.result-placeholder { min-height:50px; font-size: 24px; }
+
+section { padding-top: 2%; }
+
+#encrypt-btn { float: right;  }
