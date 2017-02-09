@@ -2,89 +2,40 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vigenère Cipher</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <script type="text/javascript">
 
-      var alphabetManager = (function() {
+    <h1 class="text-center">Vigenère Cipher</h1>
 
-          var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+    <main class="container container-fluid">
 
-          return {
+      <div class="row">
+        <div class="col-sm-12 col-md-offset-3 col-md-6">
+          <form>
+            <div class="form-group">
+              <label for="message">Your message here:</label>
+              <input type="text" id="message" class="form-control" placeholder="example: ATTACKATDAWN"/>
+            </div>
+            <a href="#" class="btn btn-primary" style="float: right;" id="encrypt-btn">Encrypt</a>
+          </form>
+        </div>
+      </div>
 
-            getLetterAt: function(n) {
-              return alphabet[n];
-            },
+      <div class="row text-center">
+        <span id="result" style="font-size: 24px;"></span>
+      </div>
 
-            getPositionOf: function(c) {
-              return alphabet.indexOf(c);
-            }
+    </main>
 
-          }
+    <!-- scripts -->
+    <script src="js/alphabet-manager.js"></script>
+    <script src="js/vigenere-cipher.js"></script>
+    <script src="js/controller.js"></script>
 
-      })();
-
-      var vigenereCipher = (function() {
-
-        var key = 'lemonlemonle';
-
-        var getDecipheredPosition = function(messageCharPosition, keyCharPosition) {
-
-          var subtraction = messageCharPosition - keyCharPosition;
-          return subtraction < 0 ? (26 + subtraction) % 26 : subtraction % 26;
-
-        }
-
-        return {
-
-          encrypt: function(message) {
-
-            var cont = 0;
-            var cipheredArray = [];
-
-            message.toLowerCase().split('').forEach(function(c) {
-
-              var messageCharPosition = alphabetManager.getPositionOf(c);
-              var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
-
-              cont === key.split('').length ? cont = 0 : cont ++;
-
-              cipheredArray.push(alphabetManager.getLetterAt((messageCharPosition + keyCharPosition) % 26));
-
-            });
-
-            return cipheredArray.join('');
-          },
-
-          decrypt: function(message) {
-
-            var cont = 0;
-            var decipheredArray = [];
-
-            message.toLowerCase().split('').forEach(function(c) {
-
-              var messageCharPosition = alphabetManager.getPositionOf(c);
-              var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
-
-              cont === key.split('').length ? cont = 0 : cont ++;
-
-              var position = getDecipheredPosition(messageCharPosition, keyCharPosition);
-              decipheredArray.push(alphabetManager.getLetterAt(position));
-
-            });
-
-            return decipheredArray.join('');
-
-          }
-
-        }
-
-      })();
-
-      console.log('"ATTACKATDAWN" encrypted: ' + vigenereCipher.encrypt('ATTACKATDAWN'));
-      console.log('"LXFOPVEFRNHR" decrypted: ' + vigenereCipher.decrypt('LXFOPVEFRNHR'));
-
-    </script>
   </body>
 </html>
