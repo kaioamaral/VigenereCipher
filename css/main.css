@@ -2,7 +2,13 @@
 
 .result-placeholder { min-height:50px; font-size: 24px; }
 
- h1 { padding: 2%; }
+.icon { font-size: 30px; margin: 2%; }
+
+footer { font-size: 24px; border-top: 2px solid #f2f2f2; padding: 6%; }
+
+a .icon, a .icon:hover, a .icon:visited { color: black; text-decoration: none; }
+
+h1 { padding: 2%; }
 
 section { padding-top: 2%; }
 

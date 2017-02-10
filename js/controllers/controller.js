@@ -38,7 +38,8 @@ var controller = (function() {
 
     init: function() {
 
-      vigenereCipher = vigenereCipherFactory.build('lemonlemonle');
+      var key = 'lemonlemonle';
+      vigenereCipher = vigenereCipherFactory.create(key);
 
       encryptBtn_onClick();
       decryptBtn_onClick();

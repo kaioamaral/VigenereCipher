@@ -4,7 +4,7 @@ var vigenereCipherFactory = (function() {
 
     return {
 
-       build : function(key) {
+       create : function(key) {
 
         return (function(key) {
 
