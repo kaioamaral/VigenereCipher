@@ -20,20 +20,54 @@
     <main class="container">
 
       <div class="row">
-        <div class="col-sm-12 col-md-offset-3 col-md-6">
-          <form>
-            <div class="form-group">
-              <label for="message">Your message here:</label>
-              <input type="text" id="message" class="form-control" placeholder="example: ATTACKATDAWN"/>
+        <div class="col-sm-12 col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <h3>Encrypt your message</h3>
             </div>
-            <a href="#" class="btn btn-primary" id="encrypt-btn">Encrypt</a>
-          </form>
-        </div>
-      </div>
+            <div class="panel-body">
 
-      <div class="row text-center result-placeholder">
-        <div class="col-md-12">
-          <span id="result"></span>
+              <label for="message">Your message:</label>
+              <div class="input-group">
+                <input type="text" id="message" class="form-control" placeholder="example: ATTACKATDAWN" autocomplete="off"/>
+                <span class="input-group-btn">
+                  <a href="#" class="btn btn-primary" id="encrypt-btn" role="button">Encrypt</a>
+                </span>
+              </div>
+
+              <div class="row text-center result-placeholder">
+                <div class="col-md-12">
+                  <span id="encryption-result"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3>Decrypt your message</h3>
+            </div>
+            <div class="panel-body">
+
+              <label for="message">Your encrypted message:</label>
+              <div class="input-group">
+                <input type="text" id="encrypted-message" class="form-control" placeholder="example: ATTACKATDAWN" autocomplete="off"/>
+                <span class="input-group-btn">
+                  <a href="#" class="btn btn-primary" id="decrypt-btn" role="button">Decrypt</a>
+                </span>
+              </div>
+
+              <div class="row text-center result-placeholder">
+                <div class="col-md-12">
+                  <span id="decryption-result"></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
 

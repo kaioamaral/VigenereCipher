@@ -37,11 +37,11 @@ var vigenereCipher = (function() {
 
       var messageCharPosition = alphabetManager.getPositionOf(c);
       var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
+      var position = _getDecipheredPosition(messageCharPosition, keyCharPosition);
+
+      decipheredArray.push(alphabetManager.getLetterAt(position));
 
       cont === key.split('').length ? cont = 0 : cont ++;
-
-      var position = getDecipheredPosition(messageCharPosition, keyCharPosition);
-      decipheredArray.push(alphabetManager.getLetterAt(position));
 
     });
 
@@ -68,7 +68,6 @@ var vigenereCipher = (function() {
       var decryptedMessage = [];
 
       message.split(' ').forEach(function(word) {
-
         decryptedMessage.push(_decrypt(word));
       });
 
