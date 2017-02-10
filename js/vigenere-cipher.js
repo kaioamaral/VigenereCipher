@@ -2,10 +2,50 @@ var vigenereCipher = (function() {
 
   var key = 'lemonlemonle';
 
-  var getDecipheredPosition = function(messageCharPosition, keyCharPosition) {
+  function _getDecipheredPosition(messageCharPosition, keyCharPosition) {
 
     var subtraction = messageCharPosition - keyCharPosition;
     return subtraction < 0 ? (26 + subtraction) % 26 : subtraction % 26;
+
+  }
+
+  function _encrypt(word) {
+
+    var cont = 0;
+    var cipheredArray = [];
+
+    word.toLowerCase().split('').forEach(function(c) {
+
+        var messageCharPosition = alphabetManager.getPositionOf(c);
+        var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
+
+        cont === key.split('').length ? cont = 0 : cont ++;
+        cipheredArray.push(alphabetManager.getLetterAt((messageCharPosition + keyCharPosition) % 26));
+
+    });
+
+    return cipheredArray.join('');
+
+  }
+
+  function _decrypt(word) {
+
+    var cont = 0;
+    var decipheredArray = [];
+
+    word.toLowerCase().split('').forEach(function(c) {
+
+      var messageCharPosition = alphabetManager.getPositionOf(c);
+      var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
+
+      cont === key.split('').length ? cont = 0 : cont ++;
+
+      var position = getDecipheredPosition(messageCharPosition, keyCharPosition);
+      decipheredArray.push(alphabetManager.getLetterAt(position));
+
+    });
+
+    return decipheredArray.join('');
 
   }
 
@@ -13,41 +53,26 @@ var vigenereCipher = (function() {
 
     encrypt: function(message) {
 
-      var cont = 0;
-      var cipheredArray = [];
+      var encryptedMessage = [];
 
-      message.toLowerCase().split('').forEach(function(c) {
-
-          var messageCharPosition = alphabetManager.getPositionOf(c);
-          var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
-
-          cont === key.split('').length ? cont = 0 : cont ++;
-
-          cipheredArray.push(alphabetManager.getLetterAt((messageCharPosition + keyCharPosition) % 26));
-
+      message.split(' ').forEach(function(word) {
+        encryptedMessage.push(_encrypt(word));
       });
 
-      return cipheredArray.join('');
+      return encryptedMessage.join(' ');
+
     },
 
     decrypt: function(message) {
 
-      var cont = 0;
-      var decipheredArray = [];
+      var decryptedMessage = [];
 
-      message.toLowerCase().split('').forEach(function(c) {
+      message.split(' ').forEach(function(word) {
 
-        var messageCharPosition = alphabetManager.getPositionOf(c);
-        var keyCharPosition =  alphabetManager.getPositionOf(key.split('')[cont]);
-
-        cont === key.split('').length ? cont = 0 : cont ++;
-
-        var position = getDecipheredPosition(messageCharPosition, keyCharPosition);
-        decipheredArray.push(alphabetManager.getLetterAt(position));
-
+        decryptedMessage.push(_decrypt(word));
       });
 
-      return decipheredArray.join('');
+      return decryptedMessage.join(' ');
 
     }
 
