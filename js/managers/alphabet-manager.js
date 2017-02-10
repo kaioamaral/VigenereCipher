@@ -1,5 +1,7 @@
 var alphabetManager = (function() {
 
+    'use strict';
+
     var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
     return {

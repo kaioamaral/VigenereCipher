@@ -1,13 +1,19 @@
 var controller = (function() {
 
+  'use strict';
+
+  var vigenereCipher = {};
+
   function encryptBtn_onClick() {
 
     document.getElementById('encrypt-btn').addEventListener('click', function(e) {
       e.preventDefault();
 
-      var message = document.getElementById('message').value;
-      var encryptedText = vigenereCipher.encrypt(message);
+      var messageInput = document.getElementById('message');
+      var encryptedText = vigenereCipher.encrypt(messageInput.value);
       document.getElementById('encryption-result').innerText = "Resultado: " + encryptedText.toUpperCase();
+
+      messageInput.value = '';
 
     });
 
@@ -18,9 +24,11 @@ var controller = (function() {
     document.getElementById('decrypt-btn').addEventListener('click', function(e) {
       e.preventDefault();
 
-      var message = document.getElementById('encrypted-message').value;
-      var encryptedText = vigenereCipher.decrypt(message);
+      var messageInput = document.getElementById('encrypted-message');
+      var encryptedText = vigenereCipher.decrypt(messageInput.value);
       document.getElementById('decryption-result').innerText = "Resultado: " + encryptedText.toUpperCase();
+
+      messageInput.value = '';
 
     });
 
@@ -29,12 +37,14 @@ var controller = (function() {
   return {
 
     init: function() {
+
+      vigenereCipher = vigenereCipherFactory.build('lemonlemonle');
+
       encryptBtn_onClick();
       decryptBtn_onClick();
+
     }
 
   };
 
-})();
-
-controller.init();
+})().init();
